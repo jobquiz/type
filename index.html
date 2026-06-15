@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypingBD Clone - Hardcoded Passages</title>
+    <title>TypingBD Clone - Advanced Practice</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Poppins:wght@400;600&display=swap');
 
@@ -258,61 +258,62 @@
 </div>
 
 <script>
-    // =========================================================================
-    // এখান থেকে আপনার প্যাসেজ পেস্ট করার জায়গা শুরু হলো (PASTE AREA)
-    // =========================================================================
+    // ==========================================
+    // PASSAGE DATABASE (Add your 2000+ passages here)
+    // ==========================================
     
     const passagesData = {
-        
-        // --- ইংরেজি প্যাসেজ রাখার জায়গা ---
         english: [
-            // প্যাসেজ ১: (আপনার দেওয়া ট্র্যাডিশন নিয়ে দীর্ঘ প্যাসেজটি)
-            `Tradition is the traditional rules and regulations of human life. People follow tradition as a rule. But we have to adapt to the changing situation. We try to change ourselves by highlighting our tradition. We all know that habit is second nature. People nurture tradition in themselves through social customs, traditions and rituals. Our tradition may differ with the changing situation. But we welcome change. We hope that some changes will bring goodness in our lives. People step from childhood to adulthood through their family and social customs. Basically, change is the law of nature. We change ourselves at different stages of our life. Before we are born, we are in the womb of our mother. After birth, we get to know the world. There is a big change between these two stages. As an adult, a person has to share his interests with others. He has to adapt to the new environment and adopt new customs. In the era of globalization, people move from one place to another for permanent residence. In doing so, people of one country adopt the food habits of another country. They even adopt some of the culture and traditions of that country. Their children adopt new traditions, customs and culture. In fact, people have to adapt themselves to the ever changing and changing situation. When they go to a new place, people have to adapt themselves to the new customs, values ​​and traditions of that place. They have to create a harmony between their own values, customs and traditions and the values, customs and traditions of the new society.`,
+            "Bangladesh, a nation born out of a profound struggle for independence in 1971, has emerged as a remarkable example of resilience and economic growth in South Asia. Despite facing numerous challenges including devastating natural disasters, political shifts, and a massive population density, the country has made significant strides in poverty reduction, health, and education. The garment industry, which is the backbone of the economy, employs millions of workers, primarily women, empowering them and transforming the socio-economic landscape. In recent years, Bangladesh has also been investing heavily in massive infrastructure projects like the Padma Bridge and the Metro Rail in Dhaka, signaling a strong commitment to modernization and regional connectivity. As the world deals with unprecedented economic shifts, Bangladesh continues to adapt, aiming to graduate from the Least Developed Countries status and moving towards becoming a middle-income nation by the end of the decade.",
             
-            // প্যাসেজ ২: (এখানে আরেকটি কপি করে পেস্ট করতে পারেন)
-            `Bangladesh, a nation born out of a profound struggle for independence in 1971, has emerged as a remarkable example of resilience and economic growth in South Asia. Despite facing numerous challenges including devastating natural disasters, political shifts, and a massive population density, the country has made significant strides in poverty reduction, health, and education. The garment industry, which is the backbone of the economy, employs millions of workers, primarily women, empowering them and transforming the socio-economic landscape. In recent years, Bangladesh has also been investing heavily in massive infrastructure projects like the Padma Bridge and the Metro Rail in Dhaka, signaling a strong commitment to modernization and regional connectivity. As the world deals with unprecedented economic shifts, Bangladesh continues to adapt, aiming to graduate from the Least Developed Countries status and moving towards becoming a middle-income nation by the end of the decade.`
+            "The rapid advancement of Artificial Intelligence (AI) and Machine Learning technologies has fundamentally reshaped the global landscape, influencing everything from healthcare and education to finance and national security. In recent years, generative AI models have demonstrated an uncanny ability to process natural language, create art, and write complex code, sparking intense debates about the future of human labor and creativity. While optimists argue that AI will augment human capabilities, automate mundane tasks, and solve complex global challenges such as climate change modeling and disease prediction, critics warn of severe ethical implications. Issues concerning algorithmic bias, data privacy, and the potential for autonomous weapons systems require immediate international regulatory frameworks. As AI systems become more integrated into critical infrastructure, ensuring robust cybersecurity measures and maintaining human oversight will be paramount.",
             
-            // নতুন ইংরেজি প্যাসেজ বসাতে চাইলে উপরে একটি কমা (,) দিয়ে নিচে আবার ` ` (ব্যাকটিক) চিহ্নের ভেতর পেস্ট করবেন।
-			
-			`The importance of leadership in an organization is immense. In fact, there is no substitute for it. But leadership cannot be created or encouraged. It cannot be taught or learned. Management cannot create leaders; it can only create situations where potential leadership qualities come into play, or it can suppress potential leadership. Leadership requires competence. But in addition to leadership competence, there may be good chief engineers or general managers, which are very rare. Leadership also requires some basic attitudes, which are very difficult to define and very difficult to change. But practice, however simple or dull, can be done by a person, whatever his qualifications, personality or attitude. It does not require any talent. It only requires perseverance. And proper practice goes a long way in developing, recognizing and utilizing any leadership potential within a management group. It should also lay the foundation for the right kind of leadership. Because leadership is not a magnetic personality. It can also be populism. Leadership is not about making friends or influencing people. It is a sales tactic. Leadership is the raising of a mans vision to a higher goal, the raising of his efficiency to a higher value, and the development of his personality beyond his natural limitations. P. Drucker. The spirit of management prepares the best ground for this kind of leadership. In the daily activities of the organization, this spirit ensures strict principles of conduct and responsibility, high standards of efficiency, and respect for the individual and his work.`,
+            "Climate change remains the most pressing existential threat facing humanity in the 21st century. The continuous emission of greenhouse gases, primarily from the burning of fossil fuels and massive deforestation, has led to a steady rise in global temperatures, resulting in extreme weather events worldwide. Nations around the globe are witnessing unprecedented heatwaves, devastating floods, and prolonged droughts that disrupt agricultural supply chains and displace vulnerable communities. The historic Paris Agreement aimed to unite the international community in limiting global warming to well below 2 degrees Celsius compared to pre-industrial levels, yet recent data suggests that current commitments fall dangerously short. Transitioning to renewable energy sources such as solar, wind, and geothermal power is no longer just an environmental imperative but an economic necessity."
         ],
-
-        // --- বাংলা প্যাসেজ রাখার জায়গা ---
         bangla: [
-            // প্যাসেজ ১:
-            `বাংলাদেশের মুক্তিযুদ্ধ শুধু একটি সশস্ত্র সংগ্রাম ছিল না, এটি ছিল একটি জাতির দীর্ঘদিনের শোষণ ও বঞ্চনার বিরুদ্ধে রুখে দাঁড়ানোর চূড়ান্ত বহিঃপ্রকাশ। ১৯৭১ সালের ২৬শে মার্চ স্বাধীনতা ঘোষণার পর থেকে দীর্ঘ নয় মাস রক্তক্ষয়ী যুদ্ধের মাধ্যমে এদেশের মুক্তিকামী মানুষ পাকিস্তানি হানাদার বাহিনীর বিরুদ্ধে জয়লাভ করে। ত্রিশ লাখ শহীদের আত্মত্যাগ এবং দুই লাখ মা-বোনের সম্ভ্রমের বিনিময়ে অর্জিত এই স্বাধীনতা আমাদের অহংকার। স্বাধীনতা পরবর্তী সময়ে যুদ্ধবিধ্বস্ত একটি দেশ থেকে আজকের উদীয়মান অর্থনীতির দেশ হিসেবে বাংলাদেশের উত্থান সত্যি বিস্ময়কর। कृषि, শিল্প, পোশাক খাত এবং প্রবাসী আয়ের ওপর ভর করে বাংলাদেশ আজ বিশ্বের দরবারে উন্নয়নের এক রোল মডেল হিসেবে পরিচিতি পেয়েছে। পদ্মা সেতু, মেট্রোরেল, কর্ণফুলী টানেল এবং রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্রের মতো মেগা প্রকল্পগুলো দেশের যোগাযোগ ও অবকাঠামো খাতে এক যুগান্তকারী পরিবর্তন এনেছে।`,
+            "বাংলাদেশের মুক্তিযুদ্ধ শুধু একটি সশস্ত্র সংগ্রাম ছিল না, এটি ছিল একটি জাতির দীর্ঘদিনের শোষণ ও বঞ্চনার বিরুদ্ধে রুখে দাঁড়ানোর চূড়ান্ত বহিঃপ্রকাশ। ১৯৭১ সালের ২৬শে মার্চ স্বাধীনতা ঘোষণার পর থেকে দীর্ঘ নয় মাস রক্তক্ষয়ী যুদ্ধের মাধ্যমে এদেশের মুক্তিকামী মানুষ পাকিস্তানি হানাদার বাহিনীর বিরুদ্ধে জয়লাভ করে। ত্রিশ লাখ শহীদের আত্মত্যাগ এবং দুই লাখ মা-বোনের সম্ভ্রমের বিনিময়ে অর্জিত এই স্বাধীনতা আমাদের অহংকার। স্বাধীনতা পরবর্তী সময়ে যুদ্ধবিধ্বস্ত একটি দেশ থেকে আজকের উদীয়মান অর্থনীতির দেশ হিসেবে বাংলাদেশের উত্থান সত্যি বিস্ময়কর। কৃষি, শিল্প, পোশাক খাত এবং প্রবাসী আয়ের ওপর ভর করে বাংলাদেশ আজ বিশ্বের দরবারে উন্নয়নের এক রোল মডেল হিসেবে পরিচিতি পেয়েছে। পদ্মা সেতু, মেট্রোরেল, কর্ণফুলী টানেল এবং রূপপুর পারমাণবিক বিদ্যুৎকেন্দ্রের মতো মেগা প্রকল্পগুলো দেশের যোগাযোগ ও অবকাঠামো খাতে এক যুগান্তকারী পরিবর্তন এনেছে।",
             
-            // প্যাসেজ ২:
-            `বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিফিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে। চিকিৎসা বিজ্ঞান থেকে শুরু করে মহাকাশ গবেষণা, যোগাযোগ ব্যবস্থা, ব্যাংকিং খাত এমনকি শিক্ষাক্ষেত্রেও এআই-এর ব্যবহার দিন দিন বৃদ্ধি পাচ্ছে। তবে প্রযুক্তির এই অবাধ ব্যবহারের কিছু নেতিবাচক দিকও রয়েছে। সাইবার নিরাপত্তা, ব্যক্তিগত তথ্যের গোপনীয়তা এবং সাইবার ক্রাইম বর্তমান সময়ের অন্যতম বড় চ্যালেঞ্জ। বিশেষ করে ডিপফেক প্রযুক্তি এবং ফেক নিউজের ছড়াছড়ি সমাজ ব্যবস্থায় গভীর প্রভাব ফেলছে। তাই প্রযুক্তির সঠিক ও নিরাপদ ব্যবহার নিশ্চিত করতে আন্তর্জাতিক পর্যায়ে কঠোর সাইবার আইন ও নীতিমালা প্রণয়নের দাবি জোরালো হচ্ছে।`
+            "বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিফিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে। চিকিৎসা বিজ্ঞান থেকে শুরু করে মহাকাশ গবেষণা, যোগাযোগ ব্যবস্থা, ব্যাংকিং খাত এমনকি শিক্ষাক্ষেত্রেও এআই-এর ব্যবহার দিন দিন বৃদ্ধি পাচ্ছে। তবে প্রযুক্তির এই অবাধ ব্যবহারের কিছু নেতিবাচক দিকও রয়েছে। সাইবার নিরাপত্তা, ব্যক্তিগত তথ্যের গোপনীয়তা এবং সাইবার ক্রাইম বর্তমান সময়ের অন্যতম বড় চ্যালেঞ্জ। বিশেষ করে ডিপফেক প্রযুক্তি এবং ফেক নিউজের ছড়াছড়ি সমাজ ব্যবস্থায় গভীর প্রভাব ফেলছে। তাই প্রযুক্তির সঠিক ও নিরাপদ ব্যবহার নিশ্চিত করতে আন্তর্জাতিক পর্যায়ে কঠোর সাইবার আইন ও নীতিমালা প্রণয়নের দাবি জোরালো হচ্ছে। আগামীর বিশ্ব হবে পুরোপুরি ডেটা নির্ভর, তাই এই প্রতিযোগিতায় টিকে থাকতে হলে প্রযুক্তিগত শিক্ষার কোনো বিকল্প নেই।",
             
-            // নতুন বাংলা প্যাসেজ বসাতে চাইলে উপরে একটি কমা (,) দিয়ে নিচে আবার ` ` (ব্যাকটিক) চিহ্নের ভেতর পেস্ট করবেন।
+            "বিশ্ব উষ্ণায়ন বা গ্লোবাল ওয়ার্মিং বর্তমান শতাব্দীর অন্যতম প্রধান বৈশ্বিক সংকট। কার্বন ডাই-অক্সাইড, মিথেনসহ অন্যান্য গ্রিনহাউস গ্যাসের মাত্রাতিরিক্ত নিঃসরণের ফলে পৃথিবীর তাপমাত্রা ক্রমাগত বৃদ্ধি পাচ্ছে। এর ফলে মেরু অঞ্চলের বরফ গলে সমুদ্রপৃষ্ঠের উচ্চতা বৃদ্ধি পাচ্ছে, যা বাংলাদেশ, মালদ্বীপসহ বিশ্বের অনেক উপকূলীয় দেশের জন্য এক অশনি সংকেত। জলবায়ু পরিবর্তনের কারণে বন্যা, খরা, ঘূর্ণিঝড় ও জলোচ্ছ্বাসের মতো প্রাকৃতিক দুর্যোগের মাত্রা ও তীব্রতা বহুগুণ বৃদ্ধি পেয়েছে। কৃষিকাজের ওপর এর বিরূপ প্রভাব পড়ছে, ফলে বিশ্বব্যাপী খাদ্য নিরাপত্তার ঝুঁকি তৈরি হচ্ছে। পরিবেশের এই চরম বিপর্যয় রোধ করতে হলে জীবাশ্ম জ্বালানির ব্যবহার কমিয়ে নবায়নযোগ্য জ্বালানি যেমন- সৌরশক্তি ও বায়ুশক্তির ব্যবহার বাড়াতে হবে। একইসাথে প্রচুর পরিমাণে বৃক্ষরোপণ এবং পরিবেশ রক্ষায় আন্তর্জাতিক চুক্তিগুলোর যথাযথ বাস্তবায়ন অত্যন্ত জরুরি।"
         ]
     };
 
-    // =========================================================================
-    // প্যাসেজ পেস্ট করার জায়গা শেষ (এর নিচের কোডগুলো সিস্টেম অটোমেটিক চালাবে)
-    // =========================================================================
+    // Keep track of used passages to avoid repetition
+    let usedPassages = {
+        english: [],
+        bangla: []
+    };
 
-    let usedPassages = { english: [], bangla: [] };
-
+    // Function to get a random, non-repeating passage
     function getRandomPassage(lang) {
         const pool = passagesData[lang];
         let used = usedPassages[lang];
 
+        // If all passages are used, reset the tracker
         if (used.length >= pool.length) {
             usedPassages[lang] = [];
             used = usedPassages[lang];
         }
 
+        // Find available indices
         let availableIndices = pool.map((_, index) => index).filter(index => !used.includes(index));
+        
+        // Pick a random index
         let randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+        
+        // Mark as used
         used.push(randomIndex);
 
         return pool[randomIndex];
     }
 
+    // ==========================================
+    // CORE LOGIC
+    // ==========================================
+
     let currentLang = '';
-    let totalTime = 0; 
+    let totalTime = 0; // in seconds
     let timeLeft = 0;
     let timerInterval = null;
     let isTestRunning = false;
@@ -332,8 +333,10 @@
         totalTime = minutes * 60;
         timeLeft = totalTime;
         
+        // Fetch a random passage dynamically
         originalText = getRandomPassage(lang);
 
+        // UI Setup
         dashboardView.style.display = 'none';
         resultView.style.display = 'none';
         typingView.style.display = 'block';
@@ -473,7 +476,6 @@
 
     function goHome() {
         resultView.style.display = 'none';
-        typingView.style.display = 'none';
         dashboardView.style.display = 'block';
         loadHistory();
     }
