@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypingBD Clone - Night Mode Enabled</title>
+    <title>TypingBD Clone - Custom Pass Condition</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Poppins:wght@400;600&display=swap');
 
@@ -96,7 +96,7 @@
         .btn-finish { background-color: var(--primary); }
         .btn-danger { background-color: var(--danger); }
         .btn-secondary { background-color: var(--text-light); }
-        .btn-theme { background-color: #6f42c1; } /* থিম বাটনের কালার */
+        .btn-theme { background-color: #6f42c1; }
 
         /* Typing Area Styles */
         .timer-bar {
@@ -205,7 +205,6 @@
 <div class="container">
     <div class="header-container">
         <h2>Advanced Typing Practice Portal</h2>
-        <!-- নাইট মোড টগল বাটন -->
         <button class="btn btn-theme" id="theme-toggle-btn" onclick="toggleTheme()">🌙 Night Mode</button>
     </div>
 
@@ -265,7 +264,12 @@
 
     <!-- 3. Result View -->
     <div id="result-view" style="display: none;" class="card">
-        <h2 style="text-align:center; color: var(--success);">CHECKING MY RESULT</h2>
+        <h2 style="text-align:center; color: var(--success); margin-bottom: 5px;">CHECKING MY RESULT</h2>
+        
+        <!-- ফাইনাল রেজাল্ট পাস/ফেল মেডেল বাটন -->
+        <div style="text-align: center; margin-bottom: 20px;">
+            <span id="res-status" style="padding: 8px 25px; border-radius: 5px; font-weight: bold; font-size: 20px; color: #fff; display: inline-block;"></span>
+        </div>
         
         <div class="result-summary">
             <div class="summary-box">
@@ -288,7 +292,11 @@
         <p><strong>আপনার লেখা (ভুলগুলো লাল চিহ্নিত):</strong></p>
         <div id="comparison-output" class="comparison-box"></div>
         
-        <div style="text-align: center; margin-top: 20px;">
+        <!-- মূল প্যাসেজ শো করার নতুন সেকশন -->
+        <p style="margin-top: 20px; margin-bottom: 5px;"><strong>মূল Passage:</strong></p>
+        <div id="original-passage-output" class="comparison-box" style="background: var(--box-bg);"></div>
+        
+        <div style="text-align: center; margin-top: 25px;">
             <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
         </div>
     </div>
@@ -302,14 +310,11 @@
     const englishRawTexts = `
 Tradition is the traditional rules and regulations of human life. People follow tradition as a rule. But we have to adapt to the changing situation. We try to change ourselves by highlighting our tradition. We all know that habit is second nature. People nurture tradition in themselves through social customs, traditions and rituals. Our tradition may differ with the changing situation. But we welcome change. We hope that some changes will bring goodness in our lives. People step from childhood to adulthood through their family and social customs. Basically, change is the law of nature.
 
-We change ourselves at different stages of our life. Before we are born, we are in the womb of our mother. After birth, we get to know the world. There is a big change between these two stages. As an adult, a person has to share his interests with others. He has to adapt to the new environment and adopt new customs. In the era of globalization, people move from one place to another for permanent residence. In doing so, people of one country adopt the food habits of another country.
-
-They even adopt some of the culture and traditions of that country. Their children adopt new traditions, customs and culture. In fact, people have to adapt themselves to the ever changing and changing situation. When they go to a new place, people have to adapt themselves to the new customs, values ​​and traditions of that place. They have to create a harmony between their own values, customs and traditions and the values, customs and traditions of the new society.
+We change ourselves at different stages of our life. Before we are born, we are in the womb of our mother. After birth, we get to know the world. There is a big change between these two stages. As an adult, a person has to share his interests with others. He has to adapt to the new environment and adopt new customs. In the era of globalization, people move from one place to another for permanent residence. In doing so, people of one country adopt the food habits of another country. They even adopt some of the culture and traditions of that country. Their children adopt new traditions, customs and culture. In fact, people have to adapt themselves to the ever changing and changing situation. When they go to a new place, people have to adapt themselves to the new customs, values ​​and traditions of that place. They have to create a harmony between their own values, customs and traditions and the values, customs and traditions of the new society.
 ---
 Bangladesh, a nation born out of a profound struggle for independence in 1971, has emerged as a remarkable example of resilience and economic growth in South Asia. Despite facing numerous challenges including devastating natural disasters, political shifts, and a massive population density, the country has made significant strides in poverty reduction, health, and education.
 
 The garment industry, which is the backbone of the economy, employs millions of workers, primarily women, empowering them and transforming the socio-economic landscape. In recent years, Bangladesh has also been investing heavily in massive infrastructure projects like the Padma Bridge and the Metro Rail in Dhaka, signaling a strong commitment to modernization and regional connectivity.
----
 The importance of leadership in an organization is immense. In fact, there is no substitute for it. But leadership cannot be created or encouraged. It cannot be taught or learned. Management cannot create leaders; it can only create situations where potential leadership qualities come into play, or it can suppress potential leadership. Leadership requires competence. But in addition to leadership competence, there may be good chief engineers or general managers, which are very rare. Leadership also requires some basic attitudes, which are very difficult to define and very difficult to change. But practice, however simple or dull, can be done by a person, whatever his qualifications, personality or attitude. It does not require any talent. It only requires perseverance. And proper practice goes a long way in developing, recognizing and utilizing any leadership potential within a management group. It should also lay the foundation for the right kind of leadership. Because leadership is not a magnetic personality. It can also be populism. Leadership is not about making friends or influencing people. It is a sales tactic. Leadership is the raising of a mans vision to a higher goal, the raising of his efficiency to a higher value, and the development of his personality beyond his natural limitations. P. Drucker. The spirit of management prepares the best ground for this kind of leadership. In the daily activities of the organization, this spirit ensures strict principles of conduct and responsibility, high standards of efficiency, and respect for the individual and his work.
 ---
 The increasing busyness of life is identified as one of the main reasons for the decline in reading habits. Life has become so busy that people hardly find time to read. As the pressure of livelihood has increased tremendously, people are forced to earn their bread in extreme despair. The money centric corporate culture is consuming life, which is making people crazy for pomp and prosperity in the form of land, flats, cars and other amenities. Reading is now a secondary matter, or not at all. In fact, there is no time for reading. They cannot even find time to read newspapers. They just skim the headlines. Due to lack of time, they cannot read anything with deep attention. They are always in a hurry to complete professional work. It is really a difficult time to witness this famine of reading.
@@ -467,7 +472,6 @@ However, true empowerment requires a change in mindset, where both men and women
 The greenhouse effect is the gradual warming of the air around the Earth due to the trapping of heat due to environmental pollution. Most climatologists believe that the greenhouse effect is a possible cause of this global warming. Examples of this are the destruction and burning of tropical rainforests, traffic congestion on city roads, rapid industrial growth, the use of CFCs in the packaging and production of commercial products, the use of detergents, etc. It is said that the oceans are also affected by pollution caused by human waste and industrial waste, oil spills from damaged supertankers and other marine disasters. However, the main cause of global warming is carbon dioxide gas produced by the burning of fossil fuels and forests, and pollutants such as methane and chlorofluorocarbons.
 
 Currently, global warming has forced environmentalists to think about its dire consequences. Climatologists predict that by the middle of the next century; temperatures could rise by up to 4 degrees Celsius. This could severely reduce the food production capacity of mankind, destroy or severely damage wildlife and forests, raise sea levels and flood coastal areas and agricultural lands. The worrying news about Bangladesh is that the lower southern part of the country may one day be submerged due to rising sea levels. Tree plantation programs should be taken immediately. Steps should be taken to stop the causes and sources of carbon dioxide emissions. We can take these steps to prevent global warming.
-
 `;
 
     const banglaRawTexts = `
@@ -507,7 +511,7 @@ Currently, global warming has forced environmentalists to think about its dire c
     }
 
     // =========================================================================
-    // ৩. নাইট মোড / ডার্ক মোড লজিক (NIGHT MODE LOGIC)
+    // ৩. নাইট মোড / ডার্ক মোড লজিক
     // =========================================================================
     function toggleTheme() {
         const body = document.body;
@@ -555,7 +559,7 @@ Currently, global warming has forced environmentalists to think about its dire c
 
     window.onload = function() {
         loadHistory();
-        initTheme(); // পেজ লোড হওয়ার সময় থিম চেক করবে
+        initTheme();
     };
 
     function startTest(lang, minutes) {
@@ -648,6 +652,16 @@ Currently, global warming has forced environmentalists to think about its dire c
             if(accuracy > 100) accuracy = 100;
         }
 
+        // কাস্টম পাস/ফেল কন্ডিশন (WPM ৩‌০+ এবং একিউরেসি ১০০% হতে হবে)
+        const isPassed = (wpm >= 30 && accuracy === 100);
+        const statusStr = isPassed ? 'PASS' : 'FAIL';
+
+        // স্ক্রিনে ফাইনাল রেজাল্ট ব্যাজ দেখানো
+        const statusBadge = document.getElementById('res-status');
+        statusBadge.innerText = `FINAL RESULT: ${statusStr}`;
+        statusBadge.style.backgroundColor = isPassed ? 'var(--success)' : 'var(--danger)';
+
+        // ইন্টারফেসে ডেটা প্রদর্শন
         document.getElementById('res-lang').innerText = currentLang.toUpperCase();
         let m = Math.floor(timeSpentSec / 60);
         let s = timeSpentSec % 60;
@@ -659,14 +673,18 @@ Currently, global warming has forced environmentalists to think about its dire c
         document.getElementById('res-correct-char').innerText = correctChars > totalTypedChars ? totalTypedChars : correctChars;
         document.getElementById('res-wrong-words').innerText = wrongWordsCount;
         document.getElementById('comparison-output').innerHTML = highlightedHTML || "<em>কোনো টেক্সট ইনপুট দেওয়া হয়নি।</em>";
+        
+        // নিচে মূল প্যাসেজটি হুবহু আউটপুট দেওয়া
+        document.getElementById('original-passage-output').innerText = originalText;
 
+        // লোকাল স্টোরেজে রেজাল্ট সংরক্ষণ
         saveResult({
             date: new Date().toLocaleString(),
             lang: currentLang,
             wpm: wpm,
             accuracy: accuracy,
             timeSpent: `${m}m ${s}s`,
-            status: accuracy >= 80 ? 'PASS' : 'FAIL'
+            status: statusStr
         });
 
         typingView.style.display = 'none';
