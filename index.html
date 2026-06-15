@@ -3,19 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypingBD Clone - Paragraph Supported</title>
+    <title>TypingBD Clone - Night Mode Enabled</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Poppins:wght@400;600&display=swap');
 
+        /* Default Light Mode Variables */
         :root {
             --bg-color: #f4f6f9;
             --white: #ffffff;
             --primary: #4e73df;
             --success: #1cc88a;
             --danger: #e74a3b;
-            --text-dark: #333;
+            --text-dark: #333333;
             --text-light: #6c757d;
             --border: #e3e6f0;
+            --card-bg: #ffffff;
+            --box-bg: #f8f9fc;
+        }
+
+        /* Night Mode Variables */
+        body.dark-mode {
+            --bg-color: #1a1c23;
+            --white: #242835;
+            --text-dark: #f4f6f9;
+            --text-light: #a0aec0;
+            --border: #374151;
+            --card-bg: #242835;
+            --box-bg: #1f222e;
         }
 
         body {
@@ -24,6 +38,7 @@
             color: var(--text-dark);
             margin: 0;
             padding: 20px;
+            transition: background-color 0.3s, color 0.3s;
         }
 
         .container {
@@ -32,15 +47,19 @@
         }
 
         .card {
-            background: var(--white);
+            background: var(--card-bg);
             border-radius: 10px;
             padding: 20px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             margin-bottom: 20px;
+            border: 1px solid var(--border);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
-        .header {
-            text-align: center;
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             margin-bottom: 30px;
         }
 
@@ -56,7 +75,8 @@
             border-radius: 10px;
             padding: 20px;
             text-align: center;
-            background: #fff;
+            background: var(--card-bg);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .btn {
@@ -65,32 +85,35 @@
             border-radius: 5px;
             cursor: pointer;
             font-weight: 600;
-            color: var(--white);
+            color: #ffffff;
             transition: 0.3s;
             margin: 5px;
         }
+        .btn:hover { opacity: 0.9; }
 
         .btn-bangla { background-color: var(--success); }
         .btn-english { background-color: #36b9cc; }
         .btn-finish { background-color: var(--primary); }
         .btn-danger { background-color: var(--danger); }
         .btn-secondary { background-color: var(--text-light); }
+        .btn-theme { background-color: #6f42c1; } /* থিম বাটনের কালার */
 
         /* Typing Area Styles */
         .timer-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: var(--white);
+            background: var(--card-bg);
             padding: 10px 20px;
             border-radius: 5px;
             border: 1px solid var(--border);
             margin-bottom: 15px;
             font-weight: bold;
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .passage-box {
-            background: #f8f9fc;
+            background: var(--box-bg);
             padding: 20px;
             border-radius: 5px;
             border: 1px solid var(--border);
@@ -100,8 +123,8 @@
             user-select: none;
             max-height: 300px;
             overflow-y: auto;
-            /* এই রুলটি স্ক্রিনশটের মতো প্যারাগ্রাফ ও স্পেস ধরে রাখবে */
             white-space: pre-wrap; 
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         textarea {
@@ -114,6 +137,9 @@
             box-sizing: border-box;
             resize: none;
             font-family: inherit;
+            background-color: var(--card-bg);
+            color: var(--text-dark);
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
         }
 
         /* Results Styles */
@@ -127,17 +153,22 @@
             padding: 12px;
             text-align: center;
             border-bottom: 1px solid var(--border);
+            transition: border-color 0.3s;
         }
 
         th {
-            background-color: #f8f9fc;
+            background-color: var(--box-bg);
             color: var(--text-light);
             font-weight: 600;
+            transition: background-color 0.3s;
         }
 
         .error-text {
             color: var(--danger);
             text-decoration: underline;
+            text-decoration-color: var(--danger);
+            text-decoration-thickness: 2px;
+            font-weight: bold;
         }
 
         .result-summary {
@@ -151,11 +182,12 @@
             padding: 15px;
             border-radius: 5px;
             border: 1px solid var(--border);
-            background: #f8f9fc;
+            background: var(--box-bg);
+            transition: background-color 0.3s, border-color 0.3s;
         }
 
         .comparison-box {
-            background: #fff;
+            background: var(--card-bg);
             padding: 15px;
             border: 1px solid var(--border);
             border-radius: 5px;
@@ -163,14 +195,18 @@
             line-height: 1.6;
             max-height: 300px;
             overflow-y: auto;
+            white-space: pre-wrap;
+            transition: background-color 0.3s, border-color 0.3s;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">
+    <div class="header-container">
         <h2>Advanced Typing Practice Portal</h2>
+        <!-- নাইট মোড টগল বাটন -->
+        <button class="btn btn-theme" id="theme-toggle-btn" onclick="toggleTheme()">🌙 Night Mode</button>
     </div>
 
     <!-- 1. Dashboard View -->
@@ -224,7 +260,7 @@
             <button class="btn btn-finish" onclick="finishTest()">Go to Finish</button>
         </div>
         <div class="passage-box" id="original-passage"></div>
-        <textarea id="user-input" placeholder="Start writing here..." onpaste="return false;" autocomplete="off"></textarea>
+        <textarea id="user-input" placeholder="Start writing here..." onpaste="return false;" autocomplete="off" spellcheck="false"></textarea>
     </div>
 
     <!-- 3. Result View -->
@@ -263,20 +299,16 @@
     // =========================================================================
     // ১. শুধু পেস্ট করার জায়গা (JUST PASTE YOUR PASSAGES HERE)
     // =========================================================================
-    
-    // একই প্যাসেজে ডাবল এন্টার দিয়ে স্পেস বা প্যারাগ্রাফ তৈরি করুন (যেমনটা Screenshot_37.png তে আছে)
-    // সম্পূর্ণ আলাদা প্যাসেজ তৈরি করতে চাইলে মাঝখানে --- ব্যবহার করুন।
     const englishRawTexts = `
-
-Bangladesh, a nation born out of a profound struggle for independence in 1971, has emerged as a remarkable example of resilience and economic growth in South Asia. Despite facing numerous challenges including devastating natural disasters, political shifts, and a massive population density, the country has made significant strides in poverty reduction, health, and education.
-
-The garment industry, which is the backbone of the economy, employs millions of workers, primarily women, empowering them and transforming the socio-economic landscape. In recent years, Bangladesh has also been investing heavily in massive infrastructure projects like the Padma Bridge and the Metro Rail in Dhaka, signaling a strong commitment to modernization and regional connectivity.
----
 Tradition is the traditional rules and regulations of human life. People follow tradition as a rule. But we have to adapt to the changing situation. We try to change ourselves by highlighting our tradition. We all know that habit is second nature. People nurture tradition in themselves through social customs, traditions and rituals. Our tradition may differ with the changing situation. But we welcome change. We hope that some changes will bring goodness in our lives. People step from childhood to adulthood through their family and social customs. Basically, change is the law of nature.
 
 We change ourselves at different stages of our life. Before we are born, we are in the womb of our mother. After birth, we get to know the world. There is a big change between these two stages. As an adult, a person has to share his interests with others. He has to adapt to the new environment and adopt new customs. In the era of globalization, people move from one place to another for permanent residence. In doing so, people of one country adopt the food habits of another country.
 
 They even adopt some of the culture and traditions of that country. Their children adopt new traditions, customs and culture. In fact, people have to adapt themselves to the ever changing and changing situation. When they go to a new place, people have to adapt themselves to the new customs, values ​​and traditions of that place. They have to create a harmony between their own values, customs and traditions and the values, customs and traditions of the new society.
+---
+Bangladesh, a nation born out of a profound struggle for independence in 1971, has emerged as a remarkable example of resilience and economic growth in South Asia. Despite facing numerous challenges including devastating natural disasters, political shifts, and a massive population density, the country has made significant strides in poverty reduction, health, and education.
+
+The garment industry, which is the backbone of the economy, employs millions of workers, primarily women, empowering them and transforming the socio-economic landscape. In recent years, Bangladesh has also been investing heavily in massive infrastructure projects like the Padma Bridge and the Metro Rail in Dhaka, signaling a strong commitment to modernization and regional connectivity.
 `;
 
     const banglaRawTexts = `
@@ -290,17 +322,12 @@ They even adopt some of the culture and traditions of that country. Their childr
 `;
 
     // =========================================================================
-    // ২. অটোমেটিক স্প্লিট লজিক (কোড নিজে নিজেই অ্যারে বানিয়ে নেবে)
+    // ২. অটোমেটিক স্প্লিট লজিক
     // =========================================================================
-    
     const passagesData = {
         english: englishRawTexts.split('---').map(text => text.trim()).filter(text => text.length > 0),
         bangla: banglaRawTexts.split('---').map(text => text.trim()).filter(text => text.length > 0)
     };
-
-    // =========================================================================
-    // ব্যাকগ্রাউন্ড সিস্টেম লজিক
-    // =========================================================================
 
     let usedPassages = { english: [], bangla: [] };
 
@@ -320,6 +347,39 @@ They even adopt some of the culture and traditions of that country. Their childr
         return pool[randomIndex];
     }
 
+    // =========================================================================
+    // ৩. নাইট মোড / ডার্ক মোড লজিক (NIGHT MODE LOGIC)
+    // =========================================================================
+    function toggleTheme() {
+        const body = document.body;
+        const btn = document.getElementById('theme-toggle-btn');
+        
+        if (body.classList.contains('dark-mode')) {
+            body.classList.remove('dark-mode');
+            btn.innerText = "🌙 Night Mode";
+            localStorage.setItem('theme', 'light');
+        } else {
+            body.classList.add('dark-mode');
+            btn.innerText = "☀️ Day Mode";
+            localStorage.setItem('theme', 'dark');
+        }
+    }
+
+    function initTheme() {
+        const savedTheme = localStorage.getItem('theme');
+        const btn = document.getElementById('theme-toggle-btn');
+        if (savedTheme === 'dark') {
+            document.body.classList.add('dark-mode');
+            btn.innerText = "☀️ Day Mode";
+        } else {
+            document.body.classList.remove('dark-mode');
+            btn.innerText = "🌙 Night Mode";
+        }
+    }
+
+    // =========================================================================
+    // ৪. কোর সিস্টেম লজিক ও ক্যালকুলেশন
+    // =========================================================================
     let currentLang = '';
     let totalTime = 0; 
     let timeLeft = 0;
@@ -334,13 +394,15 @@ They even adopt some of the culture and traditions of that country. Their childr
     const userInput = document.getElementById('user-input');
     const timerDisplay = document.getElementById('timer-display');
 
-    window.onload = loadHistory;
+    window.onload = function() {
+        loadHistory();
+        initTheme(); // পেজ লোড হওয়ার সময় থিম চেক করবে
+    };
 
     function startTest(lang, minutes) {
         currentLang = lang;
         totalTime = minutes * 60;
         timeLeft = totalTime;
-        
         originalText = getRandomPassage(lang);
 
         dashboardView.style.display = 'none';
@@ -376,28 +438,38 @@ They even adopt some of the culture and traditions of that country. Their childr
         isTestRunning = false;
         clearInterval(timerInterval);
         userInput.disabled = true;
-
         calculateAndShowResult();
     }
 
     function calculateAndShowResult() {
-        const typedText = userInput.value.trim();
+        const typedText = userInput.value;
         const timeSpentSec = totalTime - Math.max(0, timeLeft);
         const timeSpentMin = timeSpentSec / 60;
 
-        const origWords = originalText.split(/\s+/);
-        const typedWords = typedText.split(/\s+/);
+        const origWords = originalText.split(/\s+/).filter(w => w !== "");
+        const typedWords = typedText.split(/\s+/).filter(w => w !== "");
         
         let correctChars = 0;
         let wrongWordsCount = 0;
         let highlightedHTML = "";
+        let origIdx = 0;
 
         for (let i = 0; i < typedWords.length; i++) {
-            if (typedWords[i] === "") continue;
+            let found = false;
+            let lookAheadRange = 4;
 
-            if (origWords[i] && typedWords[i] === origWords[i]) {
+            for (let j = 0; j <= lookAheadRange; j++) {
+                if (origWords[origIdx + j] && typedWords[i] === origWords[origIdx + j]) {
+                    origIdx += j;
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found) {
                 correctChars += typedWords[i].length + 1; 
                 highlightedHTML += typedWords[i] + " ";
+                origIdx++;
             } else {
                 wrongWordsCount++;
                 highlightedHTML += `<span class="error-text">${typedWords[i]}</span> `;
@@ -405,6 +477,7 @@ They even adopt some of the culture and traditions of that country. Their childr
         }
 
         const totalTypedChars = typedText.length;
+        
         let wpm = 0;
         if (timeSpentMin > 0) {
             wpm = Math.round((correctChars / 5) / timeSpentMin);
@@ -417,7 +490,6 @@ They even adopt some of the culture and traditions of that country. Their childr
         }
 
         document.getElementById('res-lang').innerText = currentLang.toUpperCase();
-        
         let m = Math.floor(timeSpentSec / 60);
         let s = timeSpentSec % 60;
         document.getElementById('res-time').innerText = `${m} Min ${s} Sec`;
@@ -425,7 +497,7 @@ They even adopt some of the culture and traditions of that country. Their childr
         document.getElementById('res-wpm').innerText = wpm;
         document.getElementById('res-acc').innerText = accuracy + '%';
         document.getElementById('res-total-char').innerText = totalTypedChars;
-        document.getElementById('res-correct-char').innerText = correctChars;
+        document.getElementById('res-correct-char').innerText = correctChars > totalTypedChars ? totalTypedChars : correctChars;
         document.getElementById('res-wrong-words').innerText = wrongWordsCount;
         document.getElementById('comparison-output').innerHTML = highlightedHTML || "<em>কোনো টেক্সট ইনপুট দেওয়া হয়নি।</em>";
 
