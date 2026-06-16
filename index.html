@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypingBD Clone - Custom Pass Condition</title>
+    <title>TypingBD Clone - Full Layout with 4 Min Section</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Poppins:wght@400;600&display=swap');
 
@@ -46,6 +46,19 @@
             margin: 0 auto;
         }
 
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
         .card {
             background: var(--card-bg);
             border-radius: 10px;
@@ -56,17 +69,10 @@
             transition: background-color 0.3s, border-color 0.3s;
         }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-        }
-
         /* Dashboard Styles */
         .grid-cards {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
         }
 
@@ -97,6 +103,7 @@
         .btn-danger { background-color: var(--danger); }
         .btn-secondary { background-color: var(--text-light); }
         .btn-theme { background-color: #6f42c1; }
+        .btn-home { background-color: #4e73df; }
 
         /* Typing Area Styles */
         .timer-bar {
@@ -205,17 +212,39 @@
 <div class="container">
     <div class="header-container">
         <h2>Advanced Typing Practice Portal</h2>
-        <button class="btn btn-theme" id="theme-toggle-btn" onclick="toggleTheme()">🌙 Night Mode</button>
+        <div class="header-actions">
+            <button class="btn btn-home" id="home-btn" onclick="goHome()" style="display: none;">🏠 Home</button>
+            <button class="btn btn-theme" id="theme-toggle-btn" onclick="toggleTheme()">🌙 Night Mode</button>
+        </div>
     </div>
 
     <!-- 1. Dashboard View -->
     <div id="dashboard-view">
         <div class="grid-cards">
             <div class="test-card">
+                <h3>১ মিনিট টাইপ</h3>
+                <p>Speed Booster</p>
+                <button class="btn btn-bangla" onclick="startTest('bangla', 1)">Bangla</button>
+                <button class="btn btn-english" onclick="startTest('english', 1)">English</button>
+            </div>
+            <div class="test-card">
+                <h3>২ মিনিট টাইপ</h3>
+                <p>Accuracy Test</p>
+                <button class="btn btn-bangla" onclick="startTest('bangla', 2)">Bangla</button>
+                <button class="btn btn-english" onclick="startTest('english', 2)">English</button>
+            </div>
+            <div class="test-card">
                 <h3>৩ মিনিট টাইপ</h3>
                 <p>Trial Mode</p>
                 <button class="btn btn-bangla" onclick="startTest('bangla', 3)">Bangla</button>
                 <button class="btn btn-english" onclick="startTest('english', 3)">English</button>
+            </div>
+            <!-- নতুন ৪ মিনিট সেকশন -->
+            <div class="test-card">
+                <h3>৪ মিনিট টাইপ</h3>
+                <p>Endurance Challenge</p>
+                <button class="btn btn-bangla" onclick="startTest('bangla', 4)">Bangla</button>
+                <button class="btn btn-english" onclick="startTest('english', 4)">English</button>
             </div>
             <div class="test-card">
                 <h3>৫ মিনিট টাইপ</h3>
@@ -266,7 +295,6 @@
     <div id="result-view" style="display: none;" class="card">
         <h2 style="text-align:center; color: var(--success); margin-bottom: 5px;">CHECKING MY RESULT</h2>
         
-        <!-- ফাইনাল রেজাল্ট পাস/ফেল মেডেল বাটন -->
         <div style="text-align: center; margin-bottom: 20px;">
             <span id="res-status" style="padding: 8px 25px; border-radius: 5px; font-weight: bold; font-size: 20px; color: #fff; display: inline-block;"></span>
         </div>
@@ -292,13 +320,8 @@
         <p><strong>আপনার লেখা (ভুলগুলো লাল চিহ্নিত):</strong></p>
         <div id="comparison-output" class="comparison-box"></div>
         
-        <!-- মূল প্যাসেজ শো করার নতুন সেকশন -->
         <p style="margin-top: 20px; margin-bottom: 5px;"><strong>মূল Passage:</strong></p>
         <div id="original-passage-output" class="comparison-box" style="background: var(--box-bg);"></div>
-        
-        <div style="text-align: center; margin-top: 25px;">
-            <button class="btn btn-secondary" onclick="goHome()">Back to Home</button>
-        </div>
     </div>
 
 </div>
@@ -2683,9 +2706,9 @@ Students defied this order and organized a peaceful procession demanding the inc
 
 ত্রিশ লাখ শহীদের আত্মত্যাগ এবং দুই লাখ মা-বোনের সম্ভ্রমের বিনিময়ে অর্জিত এই স্বাধীনতা আমাদের অহংকার। স্বাধীনতা পরবর্তী সময়ে যুদ্ধবিধ্বস্ত একটি দেশ থেকে আজকের উদীয়মান অর্থনীতির দেশ হিসেবে বাংলাদেশের উত্থান সত্যি বিস্ময়কর।
 ---
-বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিфিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে।
+বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিফিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে।
 
-চিকিৎসা বিজ্ঞান থেকে শুরু করে মহাকাশ গবেষণা, যোগাযোগ ব্যবস্থা, ব্যাংকিং খাত এমনকি শিক্ষাক্ষেত্রেও এআই-এর ব্যবহার দিন দিন বৃদ্ধি পাচ্ছে। তবে প্রযুক্তির এই অবাধ ব্যবহারের কিছু নেতিবাচক দিকও রয়েছে।
+চিকিৎসা বিজ্ঞান থেকে শুরু করে মহাকাশ গবেষণা, যোগাযোগ ব্যবস্থা, ব্যাংকিং খাত এমনকি শিক্ষাক্ষেত্রেও এআই-এর ব্যবহার দিন দিন বৃদ্ধি পাচ্ছে। তবে প্রযুক্তির এই অবাধ ব্যবহারের কিছু নেতিবাচক দিকও রয়েছে।
 `;
 
     // =========================================================================
@@ -2752,6 +2775,7 @@ Students defied this order and organized a peaceful procession demanding the inc
     let timeLeft = 0;
     let timerInterval = null;
     let isTestRunning = false;
+    let isTimerStarted = false;
     let originalText = "";
 
     const dashboardView = document.getElementById('dashboard-view');
@@ -2760,6 +2784,7 @@ Students defied this order and organized a peaceful procession demanding the inc
     const passageBox = document.getElementById('original-passage');
     const userInput = document.getElementById('user-input');
     const timerDisplay = document.getElementById('timer-display');
+    const homeBtn = document.getElementById('home-btn');
 
     window.onload = function() {
         loadHistory();
@@ -2775,6 +2800,7 @@ Students defied this order and organized a peaceful procession demanding the inc
         dashboardView.style.display = 'none';
         resultView.style.display = 'none';
         typingView.style.display = 'block';
+        homeBtn.style.display = 'inline-block'; 
         
         passageBox.innerText = originalText;
         userInput.value = '';
@@ -2784,7 +2810,18 @@ Students defied this order and organized a peaceful procession demanding the inc
         updateTimerDisplay();
         
         isTestRunning = true;
+        isTimerStarted = false; 
         clearInterval(timerInterval);
+    }
+
+    userInput.addEventListener('input', () => {
+        if (isTestRunning && !isTimerStarted) {
+            isTimerStarted = true;
+            runTimer();
+        }
+    });
+
+    function runTimer() {
         timerInterval = setInterval(() => {
             timeLeft--;
             updateTimerDisplay();
@@ -2856,16 +2893,13 @@ Students defied this order and organized a peaceful procession demanding the inc
             if(accuracy > 100) accuracy = 100;
         }
 
-        // কাস্টম পাস/ফেল কন্ডিশন (WPM ৩‌০+ এবং একিউরেসি ১০০% হতে হবে)
         const isPassed = (wpm >= 30 && accuracy === 100);
         const statusStr = isPassed ? 'PASS' : 'FAIL';
 
-        // স্ক্রিনে ফাইনাল রেজাল্ট ব্যাজ দেখানো
         const statusBadge = document.getElementById('res-status');
         statusBadge.innerText = `FINAL RESULT: ${statusStr}`;
         statusBadge.style.backgroundColor = isPassed ? 'var(--success)' : 'var(--danger)';
 
-        // ইন্টারফেসে ডেটা প্রদর্শন
         document.getElementById('res-lang').innerText = currentLang.toUpperCase();
         let m = Math.floor(timeSpentSec / 60);
         let s = timeSpentSec % 60;
@@ -2878,10 +2912,8 @@ Students defied this order and organized a peaceful procession demanding the inc
         document.getElementById('res-wrong-words').innerText = wrongWordsCount;
         document.getElementById('comparison-output').innerHTML = highlightedHTML || "<em>কোনো টেক্সট ইনপুট দেওয়া হয়নি।</em>";
         
-        // নিচে মূল প্যাসেজটি হুবহু আউটপুট দেওয়া
         document.getElementById('original-passage-output').innerText = originalText;
 
-        // লোকাল স্টোরেজে রেজাল্ট সংরক্ষণ
         saveResult({
             date: new Date().toLocaleString(),
             lang: currentLang,
@@ -2893,6 +2925,7 @@ Students defied this order and organized a peaceful procession demanding the inc
 
         typingView.style.display = 'none';
         resultView.style.display = 'block';
+        homeBtn.style.display = 'inline-block'; 
     }
 
     function saveResult(resultObj) {
@@ -2934,9 +2967,17 @@ Students defied this order and organized a peaceful procession demanding the inc
     }
 
     function goHome() {
+        if (isTestRunning) {
+            if (!confirm("আপনি কি নিশ্চিত যে আপনি চলমান পরীক্ষাটি বাতিল করে হোমে ফিরে যেতে চান?")) {
+                return; 
+            }
+            isTestRunning = false;
+            clearInterval(timerInterval);
+        }
         resultView.style.display = 'none';
         typingView.style.display = 'none';
         dashboardView.style.display = 'block';
+        homeBtn.style.display = 'none'; 
         loadHistory();
     }
 </script>
