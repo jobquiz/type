@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TypingBD Clone - Full Layout with 4 Min Section</title>
+    <title>TypingBD Clone - Uniform Layout</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600&family=Poppins:wght@400;600&display=swap');
 
@@ -69,7 +69,7 @@
             transition: background-color 0.3s, border-color 0.3s;
         }
 
-        /* Dashboard Styles */
+        /* Dashboard Styles - Grid System */
         .grid-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -83,6 +83,9 @@
             text-align: center;
             background: var(--card-bg);
             transition: background-color 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .btn {
@@ -104,6 +107,7 @@
         .btn-secondary { background-color: var(--text-light); }
         .btn-theme { background-color: #6f42c1; }
         .btn-home { background-color: #4e73df; }
+        .btn-custom-start { background-color: #fd7e14; }
 
         /* Typing Area Styles */
         .timer-bar {
@@ -218,45 +222,107 @@
         </div>
     </div>
 
-    <!-- 1. Dashboard View -->
     <div id="dashboard-view">
         <div class="grid-cards">
             <div class="test-card">
-                <h3>১ মিনিট টাইপ</h3>
-                <p>Speed Booster</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 1)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 1)">English</button>
+                <div>
+                    <h3>১ মিনিট টাইপ</h3>
+                    <p>Speed Booster</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 1)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 1)">English</button>
+                </div>
             </div>
             <div class="test-card">
-                <h3>২ মিনিট টাইপ</h3>
-                <p>Accuracy Test</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 2)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 2)">English</button>
+                <div>
+                    <h3>২ মিনিট টাইপ</h3>
+                    <p>Accuracy Test</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 2)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 2)">English</button>
+                </div>
             </div>
             <div class="test-card">
-                <h3>৩ মিনিট টাইপ</h3>
-                <p>Trial Mode</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 3)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 3)">English</button>
-            </div>
-            <!-- নতুন ৪ মিনিট সেকশন -->
-            <div class="test-card">
-                <h3>৪ মিনিট টাইপ</h3>
-                <p>Endurance Challenge</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 4)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 4)">English</button>
+                <div>
+                    <h3>৩ মিনিট টাইপ</h3>
+                    <p>Trial Mode</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 3)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 3)">English</button>
+                </div>
             </div>
             <div class="test-card">
-                <h3>৫ মিনিট টাইপ</h3>
-                <p>Practice Mode</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 5)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 5)">English</button>
+                <div>
+                    <h3>৪ মিনিট টাইপ</h3>
+                    <p>Endurance Challenge</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 4)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 4)">English</button>
+                </div>
             </div>
             <div class="test-card">
-                <h3>১০ মিনিট টাইপ</h3>
-                <p>Exam Mode</p>
-                <button class="btn btn-bangla" onclick="startTest('bangla', 10)">Bangla</button>
-                <button class="btn btn-english" onclick="startTest('english', 10)">English</button>
+                <div>
+                    <h3>৫ মিনিট টাইপ</h3>
+                    <p>Practice Mode</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 5)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 5)">English</button>
+                </div>
+            </div>
+            <div class="test-card">
+                <div>
+                    <h3>১০ মিনিট টাইপ</h3>
+                    <p>Exam Mode</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 10)">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 10)">English</button>
+                </div>
+            </div>
+
+            <div class="test-card">
+                <div>
+                    <h3>কাস্টম সময় টাইপ</h3>
+                    <p style="margin-bottom: 8px;">১-৬০ মিনিট লিমিট</p>
+                    <input type="number" id="custom-time-input" min="1" max="60" value="1" style="width: 65px; padding: 6px; font-size: 15px; text-align: center; border-radius: 5px; border: 1px solid var(--border); background: var(--box-bg); color: var(--text-dark); font-weight: bold; margin-bottom: 5px;"> <span>Min</span>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button class="btn btn-bangla" onclick="startCustomTest('bangla')">Bangla</button>
+                    <button class="btn btn-english" onclick="startCustomTest('english')">English</button>
+                </div>
+            </div>
+
+            <div class="test-card">
+                <div>
+                    <h3>সময়হীন প্র্যাকটিস</h3>
+                    <p>No Time Limit Mode</p>
+                </div>
+                <div>
+                    <button class="btn btn-bangla" onclick="startTest('bangla', 'untimed')">Bangla</button>
+                    <button class="btn btn-english" onclick="startTest('english', 'untimed')">English</button>
+                </div>
+            </div>
+
+            <div class="test-card">
+                <div>
+                    <h3>কাস্টম টেক্সট প্র্যাকটিস</h3>
+                    <p style="margin: 0 0 8px 0; color: var(--text-light); font-size: 13px;">প্যাসেজ পেস্ট করে পরীক্ষা দিন</p>
+                    
+                    <textarea id="paste-text-input" placeholder="এখানে আপনার কাস্টম টেক্সটটি পেস্ট (Paste) করুন..." style="width: 100%; height: 65px; padding: 8px; font-size: 14px; border: 1px solid var(--border); border-radius: 5px; resize: none; box-sizing: border-box; background: var(--box-bg); color: var(--text-dark); margin-bottom: 8px; font-family: inherit;"></textarea>
+                    
+                    <div style="font-size: 14px; margin-bottom: 5px;">
+                        <label for="paste-time-input" style="font-weight: 600;">সময়: </label>
+                        <input type="number" id="paste-time-input" min="1" max="60" value="1" style="width: 55px; padding: 5px; font-size: 14px; text-align: center; border-radius: 5px; border: 1px solid var(--border); background: var(--box-bg); color: var(--text-dark); font-weight: bold;"> <span>Min</span>
+                    </div>
+                </div>
+                <div style="margin-top: 5px;">
+                    <button class="btn btn-custom-start" onclick="startPasteTextTest()" style="width: 100%; margin: 0; padding: 8px 0;">Start Custom Test</button>
+                </div>
             </div>
         </div>
         
@@ -275,13 +341,11 @@
                     </tr>
                 </thead>
                 <tbody id="history-table-body">
-                    <!-- Data will be loaded here via JS -->
-                </tbody>
+                    </tbody>
             </table>
         </div>
     </div>
 
-    <!-- 2. Typing Test View -->
     <div id="typing-view" style="display: none;">
         <div class="timer-bar">
             <span id="timer-display">সময়: 00:00 মিনিট</span>
@@ -291,7 +355,6 @@
         <textarea id="user-input" placeholder="Start writing here..." onpaste="return false;" autocomplete="off" spellcheck="false"></textarea>
     </div>
 
-    <!-- 3. Result View -->
     <div id="result-view" style="display: none;" class="card">
         <h2 style="text-align:center; color: var(--success); margin-bottom: 5px;">CHECKING MY RESULT</h2>
         
@@ -2706,7 +2769,7 @@ Students defied this order and organized a peaceful procession demanding the inc
 
 ত্রিশ লাখ শহীদের আত্মত্যাগ এবং দুই লাখ মা-বোনের সম্ভ্রমের বিনিময়ে অর্জিত এই স্বাধীনতা আমাদের অহংকার। স্বাধীনতা পরবর্তী সময়ে যুদ্ধবিধ্বস্ত একটি দেশ থেকে আজকের উদীয়মান অর্থনীতির দেশ হিসেবে বাংলাদেশের উত্থান সত্যি বিস্ময়কর।
 ---
-বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিফিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে।
+বর্তমান বিশ্বে তথ্যপ্রযুক্তি এবং কৃত্রিম বুদ্ধিমত্তা বা আর্টিфিশিয়াল ইন্টেলিজেন্স (এআই) এক অভাবনীয় বিপ্লব ঘটিয়েছে। মানুষের দৈনন্দিন জীবনের প্রায় প্রতিটি ক্ষেত্রে এখন প্রযুক্তির ছোঁয়া লেগেছে।
 
 চিকিৎসা বিজ্ঞান থেকে শুরু করে মহাকাশ গবেষণা, যোগাযোগ ব্যবস্থা, ব্যাংকিং খাত এমনকি শিক্ষাক্ষেত্রেও এআই-এর ব্যবহার দিন দিন বৃদ্ধি পাচ্ছে। তবে প্রযুক্তির এই অবাধ ব্যবহারের কিছু নেতিবাচক দিকও রয়েছে।
 `;
@@ -2773,9 +2836,11 @@ Students defied this order and organized a peaceful procession demanding the inc
     let currentLang = '';
     let totalTime = 0; 
     let timeLeft = 0;
+    let timeElapsed = 0; 
     let timerInterval = null;
     let isTestRunning = false;
     let isTimerStarted = false;
+    let isUntimed = false; 
     let originalText = "";
 
     const dashboardView = document.getElementById('dashboard-view');
@@ -2791,11 +2856,54 @@ Students defied this order and organized a peaceful procession demanding the inc
         initTheme();
     };
 
+    function startCustomTest(lang) {
+        let minutes = parseInt(document.getElementById('custom-time-input').value);
+        if (isNaN(minutes) || minutes < 1 || minutes > 60) {
+            alert("অনুগ্রহ করে ১ থেকে ৬০ মিনিটের মধ্যে একটি সঠিক সংখ্যা দিন।");
+            return;
+        }
+        setupTest(lang, minutes, getRandomPassage(lang));
+    }
+
+    // কাস্টম কপি-পেস্ট টেক্সট টেস্ট শুরু করার ফাংশন
+    function startPasteTextTest() {
+        let text = document.getElementById('paste-text-input').value.trim();
+        let minutes = parseInt(document.getElementById('paste-time-input').value);
+
+        if (!text) {
+            alert("অনুগ্রহ করে বক্সে কোনো টেক্সট পেস্ট করুন!");
+            return;
+        }
+        if (isNaN(minutes) || minutes < 1 || minutes > 60) {
+            alert("অনুগ্রহ করে ১ থেকে ৬০ মিনিটের মধ্যে একটি সঠিক সময় দিন।");
+            return;
+        }
+
+        let isBangla = /[\u0980-\u09FF]/.test(text);
+        let detectedLang = isBangla ? 'bangla' : 'english';
+
+        setupTest(detectedLang + ' (Custom)', minutes, text);
+    }
+
     function startTest(lang, minutes) {
+        setupTest(lang, minutes, getRandomPassage(lang));
+    }
+
+    function setupTest(lang, minutes, passageText) {
         currentLang = lang;
-        totalTime = minutes * 60;
-        timeLeft = totalTime;
-        originalText = getRandomPassage(lang);
+        originalText = passageText;
+
+        if (minutes === 'untimed') {
+            isUntimed = true;
+            totalTime = 0;
+            timeLeft = 0;
+            timeElapsed = 0;
+        } else {
+            isUntimed = false;
+            totalTime = minutes * 60;
+            timeLeft = totalTime;
+            timeElapsed = 0;
+        }
 
         dashboardView.style.display = 'none';
         resultView.style.display = 'none';
@@ -2823,18 +2931,29 @@ Students defied this order and organized a peaceful procession demanding the inc
 
     function runTimer() {
         timerInterval = setInterval(() => {
-            timeLeft--;
+            if (isUntimed) {
+                timeElapsed++;
+            } else {
+                timeLeft--;
+            }
             updateTimerDisplay();
-            if (timeLeft <= 0) {
+            
+            if (!isUntimed && timeLeft <= 0) {
                 finishTest();
             }
         }, 1000);
     }
 
     function updateTimerDisplay() {
-        let m = Math.floor(timeLeft / 60);
-        let s = timeLeft % 60;
-        timerDisplay.innerText = `সময়: ${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s} মিনিট`;
+        if (isUntimed) {
+            let m = Math.floor(timeElapsed / 60);
+            let s = timeElapsed % 60;
+            timerDisplay.innerText = `অতিবাহিত সময়: ${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s}`;
+        } else {
+            let m = Math.floor(timeLeft / 60);
+            let s = timeLeft % 60;
+            timerDisplay.innerText = `সময়: ${m < 10 ? '0'+m : m}:${s < 10 ? '0'+s : s} মিনিট`;
+        }
     }
 
     function finishTest() {
@@ -2847,7 +2966,9 @@ Students defied this order and organized a peaceful procession demanding the inc
 
     function calculateAndShowResult() {
         const typedText = userInput.value;
-        const timeSpentSec = totalTime - Math.max(0, timeLeft);
+        
+        let timeSpentSec = isUntimed ? timeElapsed : (totalTime - Math.max(0, timeLeft));
+        if (timeSpentSec <= 0) timeSpentSec = 1; 
         const timeSpentMin = timeSpentSec / 60;
 
         const origWords = originalText.split(/\s+/).filter(w => w !== "");
@@ -2903,7 +3024,7 @@ Students defied this order and organized a peaceful procession demanding the inc
         document.getElementById('res-lang').innerText = currentLang.toUpperCase();
         let m = Math.floor(timeSpentSec / 60);
         let s = timeSpentSec % 60;
-        document.getElementById('res-time').innerText = `${m} Min ${s} Sec`;
+        document.getElementById('res-time').innerText = isUntimed ? `${m} Min ${s} Sec (No Limit)` : `${m} Min ${s} Sec`;
         
         document.getElementById('res-wpm').innerText = wpm;
         document.getElementById('res-acc').innerText = accuracy + '%';
@@ -2919,7 +3040,7 @@ Students defied this order and organized a peaceful procession demanding the inc
             lang: currentLang,
             wpm: wpm,
             accuracy: accuracy,
-            timeSpent: `${m}m ${s}s`,
+            timeSpent: isUntimed ? `${m}m ${s}s (NL)` : `${m}m ${s}s`,
             status: statusStr
         });
 
